@@ -23,42 +23,23 @@ def unsuccess_payment():
 
 @app.route('/notif', methods=['POST'])
 def notification():
-    """Handle payment notification
-    
-    Expected JSON payload:
-    {
-        "status": str,
-        "invoice_id": str,
-        "amount_crypto": int,
-        "currency": str,
-        "order_id": str,
-        "invoice_info": dict
-    }
-    """
-    try:
-        data = request.get_json()
-        
-        # Validate required fields
-        required_fields = ['status', 'invoice_id', 'amount_crypto', 'currency', 'order_id', 'invoice_info']
-        if not all(field in data for field in required_fields):
-            return jsonify({'error': 'Missing required fields'}), 400
-        
-        # Process the notification
-        status = data.get('status')
-        invoice_id = data.get('invoice_id')
-        amount_crypto = data.get('amount_crypto')
-        currency = data.get('currency')
-        order_id = data.get('order_id')
-        invoice_info = data.get('invoice_info')
-        
-        # Here you can add logic to process the payment notification
-        # For example, update database, send confirmation email, etc.
-        
-        return jsonify({'message': 'payment_accepted'}), 200
-    
-    except Exception as e:
-        return jsonify({'error': str(e)}), 400
+    # print(request)
+    data = request.get_data()
+    # print(2)
+    # status = data.get('status')
+    # print(3)
+    # invoice_id = data.get('invoice_id')
+    # print(4)
+    # amount_crypto = data.get('amount_crypto')
+    # print(5)
+    # currency = data.get('currency')
+    # print(6)
+    # order_id = data.get('order_id')
+    # print(7)
+    # token = data.get('token')
+    # print(8)
 
+    return jsonify({'message': 'payment_accepted'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run()
