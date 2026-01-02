@@ -21,7 +21,7 @@ def unsuccess_payment():
     return render_template('unsuccess_payment.html')
 
 
-@app.route('/notif', methods=['POST'])
+@app.route('/notif', methods=['GET', 'POST'])
 def notification():
     # print(request)
     data = request.get_data()
@@ -40,6 +40,9 @@ def notification():
     # print(8)
 
     return jsonify({'message': 'payment_accepted'}), 200
+
+
+
 
 if __name__ == '__main__':
     app.run()
